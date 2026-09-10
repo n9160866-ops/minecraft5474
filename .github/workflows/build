@@ -1,0 +1,32 @@
+name: Build Windows exe
+
+# Se déclenche à chaque push sur main, et aussi manuellement depuis l'onglet Actions
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v4
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Compiler l'exe
+        run: npm run dist
+
+      - name: Publier l'exe comme artefact téléchargeable
+        uses: actions/upload-artifact@v4
+        with:
+          name: MC-Panel-exe
+          path: dist/*.exe
