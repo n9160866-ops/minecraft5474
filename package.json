@@ -1,0 +1,39 @@
+{
+  "name": "mc-panel-desktop",
+  "productName": "MC Panel",
+  "version": "1.0.0",
+  "description": "Application Windows pour héberger et gérer un serveur Minecraft",
+  "main": "src/main.js",
+  "author": "MC Panel",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win portable --x64"
+  },
+  "build": {
+    "appId": "com.mcpanel.desktop",
+    "productName": "MC Panel",
+    "files": [
+      "src/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        { "target": "portable", "arch": ["x64"] }
+      ],
+      "icon": "assets/icon.png"
+    },
+    "portable": {
+      "artifactName": "MC-Panel.exe"
+    }
+  },
+  "dependencies": {
+    "node-fetch": "^2.7.0",
+    "pidusage": "^3.0.2",
+    "archiver": "^7.0.1"
+  },
+  "devDependencies": {
+    "electron": "^30.0.0",
+    "electron-builder": "^24.13.3"
+  }
+}

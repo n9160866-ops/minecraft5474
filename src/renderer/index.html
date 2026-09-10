@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MC Panel</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar">
+  <div class="title">🟩 MC Panel</div>
+  <div class="status">
+    <span id="status-dot" class="dot stopped"></span>
+    <span id="status-text">Arrêté</span>
+  </div>
+</div>
+
+<div class="layout">
+
+  <aside class="sidebar">
+
+    <div class="group">
+      <h3>Contrôle</h3>
+      <button id="btn-start" class="btn green">🟢 Démarrer</button>
+      <button id="btn-stop" class="btn red">🔴 Arrêter</button>
+      <button id="btn-restart" class="btn blue">🔄 Redémarrer</button>
+      <button id="btn-kill" class="btn ghost">⚠️ Forcer l'arrêt</button>
+    </div>
+
+    <div class="group">
+      <h3>Dossiers & Java</h3>
+      <button id="btn-open-folder" class="btn ghost">📁 Ouvrir dossier serveur</button>
+      <button id="btn-pick-folder" class="btn ghost">⚙️ Choisir dossier serveur</button>
+      <button id="btn-pick-java" class="btn ghost">☕ Choisir java.exe</button>
+      <div class="mini-path" id="server-dir-label">...</div>
+      <div class="mini-path" id="java-path-label">...</div>
+    </div>
+
+    <div class="group">
+      <h3>Version du serveur</h3>
+      <label>Version Minecraft (Paper)</label>
+      <select id="sel-version"></select>
+      <label>Build</label>
+      <select id="sel-build"></select>
+      <button id="btn-download" class="btn blue">⬇️ Télécharger</button>
+      <button id="btn-eula" class="btn ghost">✅ Accepter l'EULA</button>
+    </div>
+
+    <div class="group">
+      <h3>Ressources</h3>
+      <label>RAM min (Mo)</label>
+      <input id="cfg-ram-min" type="number" step="256">
+      <label>RAM max (Mo)</label>
+      <input id="cfg-ram-max" type="number" step="256">
+      <label>Threads CPU (GC)</label>
+      <input id="cfg-cpu-threads" type="number" min="1" max="32">
+      <label class="checkbox-row">
+        <input id="cfg-auto-restart" type="checkbox">
+        Redémarrage auto en cas de crash
+      </label>
+      <button id="btn-save-config" class="btn blue">💾 Sauvegarder</button>
+    </div>
+
+    <div class="group">
+      <h3>Maintenance</h3>
+      <button id="btn-backup" class="btn ghost">🗄️ Sauvegarder le monde</button>
+    </div>
+
+    <div class="group stats">
+      <h3>📊 Ressources en direct</h3>
+      <div class="stat-row"><span>CPU</span><span id="stat-cpu">–</span></div>
+      <div class="stat-row"><span>RAM</span><span id="stat-ram">–</span></div>
+    </div>
+
+  </aside>
+
+  <main class="console-area">
+    <div id="console"></div>
+    <div class="console-input">
+      <input id="cmd-input" type="text" placeholder="Commande (ex: say bonjour, op Joueur, whitelist add ...)">
+      <button id="btn-send" class="btn blue">Envoyer</button>
+    </div>
+  </main>
+
+</div>
+
+<script src="renderer.js"></script>
+</body>
+</html>
